@@ -1,9 +1,9 @@
-const express = require('express');
-const bodyParser = require('body-Parser');
-const app = express();
-const port = process.env.Port || 5000;
+const express = require('express'); // express 불러오기
+const bodyParser = require('body-Parser'); // body-Parser 불러오기
+const app = express(); // express 사용
+const port = process.env.Port || 5000; // port 정의 - 5000
 
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // json의 형태로 사용하겠다
 app.use(bodyParser.urlencoded({ extended: true}));
 
 app.get('/api/customers', (req, res) => {
