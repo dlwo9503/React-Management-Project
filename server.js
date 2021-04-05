@@ -7,11 +7,11 @@ const port = process.env.Port || 5000; // port 정의 - 5000
 app.use(bodyParser.json()); // json의 형태로 사용하겠다
 app.use(bodyParser.urlencoded({ extended: true}));
 
-const data = fs.readFileSync('./database.json');
-const conf = JSON.parse(data);
-const mysql = require('mysql');
+const data = fs.readFileSync('./database.json'); // 파일 접근
+const conf = JSON.parse(data); // JSON 형식으로 data를 변환해주고
+const mysql = require('mysql'); // mysql 라이브러리 불러오기
 
-const connection = mysql.createConnection({
+const connection = mysql.createConnection({ // conf에 저장되어있는 JSON 형식 데이터 연결
   host: conf.host,
   user: conf.user,
   password: conf.password,

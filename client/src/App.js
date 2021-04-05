@@ -6,6 +6,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Customer from './components/Customer'; // export 한 Customer 불러오기
+import CustomerAdd from './components/CustomerAdd'; // export 한 Customer 불러오기
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
@@ -69,31 +70,34 @@ class App extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Paper className={classes.root}>
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow>
-              <TableCell>번호</TableCell>
-              <TableCell>이미지</TableCell>
-              <TableCell>이름</TableCell>
-              <TableCell>생년월일</TableCell>
-              <TableCell>성별</TableCell>
-              <TableCell>직업</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {this.state.customers ? this.state.customers.map(c => { // customers에 데이터가 있다면? true : false
-              return (<Customer key={c.id} id={c.id} image={c.image} name={c.name} birthday={c.birthday} gender={c.gender} job={c.job} />)
-            }) :
-            <TableRow>
-              <TableCell colSpan="6" align="center">
-                <CirculerProgress className={classes.progress} variant="indeterminate" value={this.state.completed} />
-              </TableCell>
-            </TableRow>
-            }
-          </TableBody>
-        </Table>
-      </Paper>
+      <div>
+        <Paper className={classes.root}>
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow>
+                <TableCell>번호</TableCell>
+                <TableCell>이미지</TableCell>
+                <TableCell>이름</TableCell>
+                <TableCell>생년월일</TableCell>
+                <TableCell>성별</TableCell>
+                <TableCell>직업</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {this.state.customers ? this.state.customers.map(c => { // customers에 데이터가 있다면? true : false
+                return (<Customer key={c.id} id={c.id} image={c.image} name={c.name} birthday={c.birthday} gender={c.gender} job={c.job} />)
+              }) :
+              <TableRow>
+                <TableCell colSpan="6" align="center">
+                  <CirculerProgress className={classes.progress} variant="indeterminate" value={this.state.completed} />
+                </TableCell>
+              </TableRow>
+              }
+            </TableBody>
+          </Table>
+        </Paper>
+        <CustomerAdd/>
+      </div>
     );
   }
 }
