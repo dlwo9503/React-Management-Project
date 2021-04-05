@@ -10,6 +10,7 @@
 import React from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import CustomerDelete from './CustomerDelete';
 
 class Customer extends React.Component { // 리엑트에 컴포넌트 형태로 작성이 된 클래스를 상속받아서 Customer 클래스 정의하기
     render() { // render()는 실제로 그려지는 내용 담는 곳, props를 이용해서 받은 값 이용하기 (this)
@@ -21,6 +22,7 @@ class Customer extends React.Component { // 리엑트에 컴포넌트 형태로 
                 <TableCell>{this.props.birthday}</TableCell>
                 <TableCell>{this.props.gender}</TableCell>
                 <TableCell>{this.props.job}</TableCell>
+                <TableCell><CustomerDelete stateRefresh={this.props.stateRefresh} id={this.props.id}/></TableCell>
             </TableRow>
         )
     }
