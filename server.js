@@ -1,5 +1,5 @@
 const fs = require('fs'); // 파일에 접근 가능하게하는 라이브러리
-const express = require('express'); // express 불러오기
+const express = require('express'); // express 모듈 불러오기
 const bodyParser = require('body-Parser'); // body-Parser 불러오기
 const app = express(); // express 사용
 const port = process.env.Port || 5000; // port 정의 - 5000
@@ -20,8 +20,9 @@ const connection = mysql.createConnection({ // conf에 저장되어있는 JSON �
 });
 connection.connect();
 
-const multer = require('multer');
+const multer = require('multer'); // 이미지 업로드하는데 사용되는 모듈
 const upload = multer({dest: './upload'})
+const sharp = require('sharp'); // 이미지 리사이징 하기 위한 라이브러리
 
 app.get('/api/customers', (req, res) => {
     connection.query(
