@@ -44,9 +44,22 @@ props or state => shouldComponentUpdate() // 갱신될 경우 다시 불러옴
 
 class App extends Component {
 
-  state = {
-    customers: "",
-    completed: 0 // 0 ~ 100, 게이지를 나타내기 위함
+  constructor(props) {
+    super(props);
+    this.state = {
+      customers: '',
+      completed: 0
+    }
+  }
+
+  stateRefresh = () => {
+    this.setState({
+      customers: '',
+      completed: 0
+    });
+    this.callApi()
+      .then(res => this.setState({customers: res})) // 받아온 데이터를 customers에 저장
+      .catch(err => console.log(err)); // 에러 처리
   }
 
   componentDidMount() {
@@ -96,7 +109,7 @@ class App extends Component {
             </TableBody>
           </Table>
         </Paper>
-        <CustomerAdd/>
+        <CustomerAdd stateRefresh={this.stateRefresh}/>
       </div>
     );
   }

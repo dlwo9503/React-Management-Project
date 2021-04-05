@@ -19,6 +19,7 @@ class CustomerAdd extends React.Component {
         this.addCustomer()
             .then((response) => {
                 console.log(response.data);
+                this.props.stateRefresh();
             })
         this.setState({
             file: null, // 바이트 형태의 파일
@@ -28,7 +29,6 @@ class CustomerAdd extends React.Component {
             job: '',
             fileName: '' // 이미지의 이름
         })
-        window.location.reload();
     }
 
     handleFileChange = (e) => {
