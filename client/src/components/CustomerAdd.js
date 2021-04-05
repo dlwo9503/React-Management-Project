@@ -20,11 +20,20 @@ class CustomerAdd extends React.Component {
             .then((response) => {
                 console.log(response.data);
             })
+        this.setState({
+            file: null, // 바이트 형태의 파일
+            userName: '',
+            birthday: '',
+            gender: '',
+            job: '',
+            fileName: '' // 이미지의 이름
+        })
+        window.location.reload();
     }
 
     handleFileChange = (e) => {
         this.setState({
-            file: e.target.file[0],
+            file: e.target.files[0],
             fileName: e.target.value
         })
     }
